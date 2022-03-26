@@ -1,0 +1,10 @@
+<div id="tabla">
+    <h1>Tabla de productos</h1>
+    <a href="/"><button>Volver al formulario</button></a>
+    <br><br>
+    {{#if data}}
+        {{>tabla}}
+    {{else}}
+        <h1>No se encontraron productos</h1>
+    {{/if}}
+</div>

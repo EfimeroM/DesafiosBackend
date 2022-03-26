@@ -1,0 +1,1 @@
+El motor de plantillas que preferiria para mi proyecto seria handlebars ya que sus syntaxis no es tan rebuscada y es facil de comprender

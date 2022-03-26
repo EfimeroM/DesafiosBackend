@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th>nombre</th>
+    <th>precio</th>
+    <th>foto</th>
+  </tr>
+  {{#each data}}
+  <tr>
+    <td>{{this.name}}</td>
+    <td>{{this.price}}</td>
+    <td><img src="{{this.thumbnail}}" alt="{{this.name}}"></td>
+  </tr>
+  {{/each}}
+  
+</table>

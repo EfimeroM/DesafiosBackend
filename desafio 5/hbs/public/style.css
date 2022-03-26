@@ -1,0 +1,30 @@
+body{
+    font-family: calibri;
+}
+#formulario{
+    padding: 5vh;
+}
+#form-content input{
+    width: 30vw;
+    margin: 2vh;
+    padding: 1vh;
+}
+#form-content button{
+    padding: 1vh;
+}
+
+#tabla{
+    padding: 5vh;
+}
+#tabla button{
+    border: 1px solid black;
+    padding: 1vh;
+}
+#tabla table{
+    width: 100%;
+    border: 1px solid black;
+}
+table td, th{
+    padding: 1vh 3vw;
+    border: 1px solid black;
+}

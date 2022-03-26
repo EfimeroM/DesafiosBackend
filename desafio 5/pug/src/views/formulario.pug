@@ -1,0 +1,22 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="style.css")
+        title formulario
+    body
+        div(id="formulario")
+            h1 Formulario
+            a(href="/productos")
+                button Ver lista de productos 
+            div(id="form-content")
+                form(action="/productos", method="post")
+                    input(type="text" name="name" placeholder="nombre")
+                    br 
+                    input(type="text" name="price" placeholder="precio") 
+                    br
+                    input(type="text" name="thumbnail" placeholder="url img del producto") 
+                    br
+                    button(type="submit") Añadir producto 
