@@ -1,0 +1,29 @@
+<script>
+  //recibimos el array de productos y lo pintamos en una tabla
+  socket.on("productsSendBack", (products)=>{
+      let innerProduct =`
+      <tr>
+        <th>nombre</th>
+        <th>precio</th>
+        <th>foto</th>
+      </tr>
+      `
+      //si products no esta vacio lo mapeamos sino se muestra un msj de que no hay productos
+      if(products[0]){
+        products.map((product)=>{
+          innerProduct+=`
+          <tr>
+              <td>${product.name}</td>
+              <td>${product.price}</td>
+              <td><img src="${product.thumbnail}" alt="${product.name}"></td>
+          </tr>
+          `
+        })
+        document.getElementById('table').innerHTML= innerProduct
+      }else{
+        document.getElementById('table').innerHTML= `<h1>No hay productos añadidos</h1>`
+      }
+  })
+</script>
+<table id="table">
+</table>

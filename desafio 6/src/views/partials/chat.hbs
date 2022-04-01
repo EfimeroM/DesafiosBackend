@@ -1,0 +1,42 @@
+<script>
+    const addMessage = ()=>{
+        const email = document.getElementById("email").value
+        const msj = document.getElementById("msj").value
+        socket.emit("addMessage", {
+            email,
+            msj
+        })
+        document.getElementById("msj").value = ""
+    }
+    //recibimos el array de mensajes y lo pintamos en una lista
+    socket.on("messagesSendBack", (messages)=>{
+        let innerMessage =``
+        //si messages no esta vacio lo mapeamos sino se muestra un msj de que no hay mensajes
+        if(messages[0]){
+            document.getElementById('chat').innerHTML= `
+            <ul id="ul">
+            </ul>
+            `
+            messages.map((message)=>{
+            innerMessage+=`
+            <li>
+                <p id="email">${message.email}</p> 
+                <p id="date">[${message.date}]:</p>
+                <p id="msj">${message.msj}</p>
+            </li>
+            `
+            })
+            document.getElementById('ul').innerHTML= innerMessage
+        }else{
+            document.getElementById('chat').innerHTML= `<h1>No hay mensajes carnalito</h1>`
+        }
+    })
+</script>
+<form onSubmit="addMessage();return false" >
+        <input type="text" name="email" id="email" placeholder="ingrese su email" required>
+        <input type="text" name="msj" id="msj" placeholder="ingrese su mensaje">
+        <button type="submit">Enviar</button>
+    </form>
+    <hr>
+<div id="chat">
+</div>
