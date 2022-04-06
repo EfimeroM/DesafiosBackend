@@ -1,0 +1,189 @@
+<div id="table-products">
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Codigo</th>
+        <th>Imagen</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Comprar</th>
+        {{#if admin}}
+          <th>modif</th>
+          <th>delete</th>
+        {{/if}}
+      </tr>
+      {{#if admin}}
+        {{#each products}}
+          <tr>
+            <td>{{this.nombre}}</td>
+            <td>{{this.descripcion}}</td>
+            <td>{{this.codigo}}</td>
+            <td><img src="{{this.foto}}" alt="{{this.nombre}}"></td>
+            <td>{{this.precio}}</td>
+            <td>{{this.stock}}</td>
+            <td>
+              <a onclick="addCart(`{{this.id}}`, `{{this.timestamp}}`, `{{this.nombre}}`, `{{this.descripcion}}`, `{{this.codigo}}`, `{{this.foto}}`, `{{this.precio}}`, `{{this.stock}}`)">
+                <img src="https://cdn1.iconfinder.com/data/icons/leto-ecommerce-shopping-2/64/put_to_shopping_cart_arrow-256.png" alt="icono modificar">
+              </a>
+            </td>
+            <td>
+              <a onclick="updateProduct(`{{this.id}}`, `{{this.nombre}}`, `{{this.descripcion}}`, `{{this.codigo}}`, `{{this.foto}}`, `{{this.precio}}`, `{{this.stock}}`)">
+                <img src="https://cdn2.iconfinder.com/data/icons/flat-icons-web/40/Checked-256.png" alt="icono modificar">
+              </a>
+            </td>
+            <td>
+              <a onclick=deleteProduct({{this.id}})>
+                <img src="https://cdn1.iconfinder.com/data/icons/basic-ui-elements-coloricon/21/19-256.png" alt="icono eliminar">
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      {{else}}
+        {{#each products}}
+          <tr>
+            <td>{{this.nombre}}</td>
+            <td>{{this.descripcion}}</td>
+            <td>{{this.codigo}}</td>
+            <td><img src="{{this.foto}}" alt="{{this.nombre}}"></td>
+            <td>{{this.precio}}</td>
+            <td>{{this.stock}}</td>
+            <td>
+              <a onclick="addCart(`{{this.id}}`, `{{this.timestamp}}`, `{{this.nombre}}`, `{{this.descripcion}}`, `{{this.codigo}}`, `{{this.foto}}`, `{{this.precio}}`, `{{this.stock}}`)">
+                <img src="https://cdn1.iconfinder.com/data/icons/leto-ecommerce-shopping-2/64/put_to_shopping_cart_arrow-256.png" alt="icono modificar">
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      {{/if}}
+    </table>
+</div>
+<script>
+
+  const deleteProduct =(id)=>{
+    fetch(`http://localhost:8080/api/productos/${id}`,{
+      method:"DELETE"
+    })
+      .then(response => response.json())
+      .then( window.location.href="/api/productos" )
+  }
+
+  const updateProduct =(id, nombre, descripcion, codigo, foto, precio, stock)=>{
+    swalAlertUpdate(nombre, descripcion, codigo, foto, precio, stock)
+      .then((res)=>{
+        if(res){
+          fetch(`http://localhost:8080/api/productos/${id}`,{
+            method:"PUT",
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify({
+              id:id,
+              ...res
+            })
+          })
+          .then(response => response.json())
+          .then(window.location.href="/api/productos")
+        }
+      })
+  }
+  //Form update product
+  async function swalAlertUpdate(nombre, descripcion, codigo, foto, precio, stock){
+    const { value: formValues } = await Swal.fire({
+        title: 'Modificar Producto',
+        html:
+          `<label for="swal-input1">Nombre:</label>
+            <input id="swal-input1" value=${nombre} class="swal2-input">
+          <label for="swal-input2">Descripcion:</label>
+            <input id="swal-input2" value=${descripcion} class="swal2-input">
+          <label for="swal-input3">Codigo producto:</label>
+            <input id="swal-input3" value=${codigo} class="swal2-input">
+          <label for="swal-input4">Url de la imagen:</label>
+            <input id="swal-input4" value=${foto} class="swal2-input">
+          <label for="swal-input5">Precio $:</label>
+            <input id="swal-input5" value=${precio} class="swal2-input">
+          <label for="swal-input6">Stock total:</label>
+            <input id="swal-input6" value=${stock} class="swal2-input">`,
+        focusConfirm: false,
+        showCancelButton: true,
+        preConfirm: () => {
+          return ({
+              "nombre": document.getElementById('swal-input1').value,
+              "descripcion": document.getElementById('swal-input2').value,
+              "codigo": document.getElementById('swal-input3').value,
+              "foto": document.getElementById('swal-input4').value,
+              "precio": document.getElementById('swal-input5').value,
+              "stock": document.getElementById('swal-input6').value
+            })
+        }
+      })
+      if (formValues) {
+        return(formValues)
+      }
+  }
+  //add product in cart
+  const addCart = (id, timestamp, nombre, descripcion, codigo, foto, precio, stock)=>{
+    const dataSelect = document.getElementById("select-cart")
+    if(dataSelect != null){
+      const idCart = parseInt(dataSelect.value)
+      fetch(`http://localhost:8080/api/carrito/${idCart}/productos`,{
+            method:"POST",
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify({
+              id: parseInt(id),
+              timestamp,
+              nombre,
+              descripcion,
+              codigo,
+              foto,
+              precio,
+              stock
+            })
+          })
+          .then(response => response.json())
+          .then(swalAlertAdd(idCart))
+    }else{
+      let fecha = Date.now()
+      fetch(`http://localhost:8080/api/carrito`,{
+          method:"POST",
+          headers: {'content-type': 'application/json'},
+          body: JSON.stringify({
+            producto:[{
+              id: parseInt(id),
+              timestamp,
+              nombre,
+              descripcion,
+              codigo,
+              foto,
+              precio,
+              stock
+            }]
+          })
+        })
+      .then(swalAlertAdd(1))
+      .then(response => response.json())
+      .finally(setTimeout(reload, 2000))
+    }
+  }
+  //reload page
+  const reload =()=>{
+    location.reload()
+  }
+  //notif add product
+  const swalAlertAdd =(idCart)=>{
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    Toast.fire({
+      icon: 'success',
+      title: `Producto añadido correctamente al carrito con id: ${idCart}`
+    }) 
+  }
+</script>
+

@@ -1,1 +1,3 @@
-El motor de plantillas que preferiria para mi proyecto seria handlebars ya que sus syntaxis no es tan rebuscada y es facil de comprender
+En el archivo .env se encuentran las variables de entorno
+PORT
+ADMIN

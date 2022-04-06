@@ -1,0 +1,54 @@
+<h1>Tabla de carritos disponibles</h1>
+<a onclick="newCart()"><button>+ nuevo carrito</button></a>
+{{#if cart}}
+        <div id="table-carts">
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>view</th>
+                    <th>delete</th>
+                </tr>
+                {{#each cart}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>
+                            <a onclick=viewCart({{this.id}})>
+                                <img src="https://cdn0.iconfinder.com/data/icons/interface-editing-and-time-1/64/magnifier-search-view-256.png" alt="icono eliminar">
+                            </a>
+                        </td>
+                        <td>
+                            <a onclick=deleteCart({{this.id}})>
+                                <img src="https://cdn1.iconfinder.com/data/icons/basic-ui-elements-coloricon/21/19-256.png" alt="icono eliminar">
+                            </a>
+                        </td>
+                    </tr>
+                {{/each}}
+            </table>
+        </div>
+{{else}}
+    <h2>No hay carritos para mostrar...</h2>
+{{/if}}    
+
+<script>
+    const newCart = ()=>{
+        fetch(`http://localhost:8080/api/carrito`,{
+          method:"POST",
+          headers: {'content-type': 'application/json'},
+          body: JSON.stringify({
+            producto:[]
+          })
+        })
+        .then(response => response.json())
+        .then( window.location.href="/api/carrito" )
+    }
+    const deleteCart =(id)=>{
+        fetch(`http://localhost:8080/api/carrito/${id}`,{
+            method:"DELETE"
+        })
+        .then(response => response.json())
+        .then( window.location.href="/api/carrito" )
+    }
+    const viewCart =(id)=>{
+        window.location.href=`/api/carrito/${id}/productos`
+    }
+</script>

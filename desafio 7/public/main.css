@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: calibri;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/001/834/092/large_2x/shopping-online-ecommerce-with-paper-bag-in-smartphone-and-earth-maps-free-vector.jpg");
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+  body #logo img {
+    width: 50px;
+    height: 50px; }
+  body #cart-item {
+    position: absolute;
+    right: 50px;
+    top: 7px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%; }
+    body #cart-item:hover {
+      border: 5px solid #c7c7c7; }
+    body #cart-item img {
+      width: 100%; }
+
+#home {
+  padding: 2vh;
+  background-color: rgba(0, 0, 0, 0.48); }
+  #home h1 {
+    font-size: 7vh;
+    text-shadow: 0.1em 0.1em #333;
+    color: white;
+    font-weight: bold; }
+  #home #content {
+    width: 80%;
+    padding: 2vh 0; }
+    #home #content h2 {
+      color: white;
+      text-shadow: 0.1em 0.1em black;
+      line-height: 1.5;
+      padding: 2vh 0; }
+    #home #content h3 {
+      color: white;
+      text-shadow: 0.1em 0.1em black;
+      line-height: 1.5; }
+    #home #content #donate {
+      width: 230px;
+      padding: .7vh 2vw;
+      border: 2px solid white;
+      border-radius: 20px;
+      display: flex;
+      justify-content: flex-start;
+      background-color: rgba(0, 0, 0, 0.596); }
+      #home #content #donate:hover {
+        cursor: pointer; }
+      #home #content #donate img {
+        width: 50px; }
+    #home #content #apps {
+      display: flex; }
+      #home #content #apps .card-app {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 4vw 0 0;
+        border: 4px solid black;
+        width: 400px;
+        height: 600px; }
+        #home #content #apps .card-app:hover {
+          border: 4px solid white;
+          cursor: pointer; }
+        #home #content #apps .card-app h1 {
+          padding: 7vh 0; }
+      #home #content #apps #vaetics {
+        background-image: url("img/fondo-vaetics.webp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; }
+        #home #content #apps #vaetics img {
+          width: 50%;
+          margin-bottom: -35px; }
+      #home #content #apps #mamon-app {
+        background-image: url("img/fondo-mamon.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; }
+        #home #content #apps #mamon-app img {
+          width: 70%;
+          margin-bottom: -35px; }
+
+#products {
+  padding: 2vh;
+  background-color: rgba(0, 0, 0, 0.341);
+  height: 100vh;
+  display: flex; }
+  #products #form-table {
+    width: 80%; }
+    #products #form-table #form-products {
+      padding: 2vh 0; }
+      #products #form-table #form-products form {
+        display: flex;
+        flex-direction: column;
+        width: 30vw; }
+        #products #form-table #form-products form input {
+          margin: 1vh 0;
+          padding: 1vh; }
+        #products #form-table #form-products form button {
+          padding: 1vh 0;
+          width: 150px; }
+    #products #form-table #table-products table {
+      background-color: rgba(0, 0, 0, 0.839);
+      color: white; }
+      #products #form-table #table-products table tr th {
+        font-weight: bold; }
+      #products #form-table #table-products table tr td, #products #form-table #table-products table tr th {
+        border: 1px solid #590077;
+        padding: 1vh 2vw; }
+        #products #form-table #table-products table tr td img, #products #form-table #table-products table tr th img {
+          width: 50px; }
+        #products #form-table #table-products table tr td a, #products #form-table #table-products table tr th a {
+          width: 50px;
+          height: 50px; }
+          #products #form-table #table-products table tr td a:hover, #products #form-table #table-products table tr th a:hover {
+            cursor: pointer; }
+            #products #form-table #table-products table tr td a:hover img, #products #form-table #table-products table tr th a:hover img {
+              background-color: rgba(255, 255, 255, 0.332);
+              border-radius: 100%; }
+  #products #cart-select {
+    width: 20%;
+    border: 2px solid #6f0085;
+    background-color: rgba(0, 0, 0, 0.176);
+    padding: 1vh; }
+    #products #cart-select #select-cart {
+      padding: 1vh 3vw;
+      background-color: #390756;
+      color: white;
+      border: 2px solid gray;
+      font-weight: bold; }
+      #products #cart-select #select-cart:hover {
+        cursor: pointer;
+        border: 2px solid white; }
+    #products #cart-select h1, #products #cart-select h2, #products #cart-select h4 {
+      font-weight: bold;
+      color: white;
+      text-shadow: 0.1em 0.1em #333;
+      padding: 1vh 0; }
+    #products #cart-select h4 {
+      padding: 1vh 0;
+      font-weight: normal;
+      color: #c8c8c8; }
+  #products h1 {
+    color: white;
+    text-shadow: 0.1em 0.1em #333; }
+
+#cart {
+  padding: 2vh;
+  background-color: rgba(0, 0, 0, 0.341);
+  height: 100vh; }
+  #cart #table-carts {
+    padding: 2vh 0; }
+    #cart #table-carts table {
+      background-color: rgba(0, 0, 0, 0.839);
+      color: white; }
+      #cart #table-carts table tr th {
+        font-weight: bold; }
+      #cart #table-carts table tr td, #cart #table-carts table tr th {
+        border: 1px solid #590077;
+        padding: 1vh 2vw; }
+        #cart #table-carts table tr td img, #cart #table-carts table tr th img {
+          width: 50px; }
+        #cart #table-carts table tr td a, #cart #table-carts table tr th a {
+          width: 50px;
+          height: 50px; }
+          #cart #table-carts table tr td a:hover, #cart #table-carts table tr th a:hover {
+            cursor: pointer; }
+            #cart #table-carts table tr td a:hover img, #cart #table-carts table tr th a:hover img {
+              background-color: rgba(255, 255, 255, 0.716);
+              border-radius: 100%; }
+  #cart #table-cart-products table {
+    background-color: rgba(0, 0, 0, 0.839);
+    color: white; }
+    #cart #table-cart-products table tr th {
+      font-weight: bold; }
+    #cart #table-cart-products table tr td, #cart #table-cart-products table tr th {
+      border: 1px solid #590077;
+      padding: 1vh 2vw; }
+      #cart #table-cart-products table tr td img, #cart #table-cart-products table tr th img {
+        width: 50px; }
+      #cart #table-cart-products table tr td a, #cart #table-cart-products table tr th a {
+        width: 50px;
+        height: 50px; }
+        #cart #table-cart-products table tr td a:hover, #cart #table-cart-products table tr th a:hover {
+          cursor: pointer; }
+          #cart #table-cart-products table tr td a:hover img, #cart #table-cart-products table tr th a:hover img {
+            background-color: rgba(255, 255, 255, 0.332);
+            border-radius: 100%; }
+  #cart h1, #cart h2 {
+    font-weight: bold;
+    color: white;
+    text-shadow: 0.1em 0.1em #333; }
+  #cart a button {
+    background-color: rgba(0, 0, 0, 0.704);
+    border: 5px solid #520887;
+    color: white;
+    padding: 1vh;
+    border-radius: 20px;
+    font-weight: bold; }
+    #cart a button:hover {
+      border: 5px solid #cbcbcb; }

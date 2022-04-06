@@ -1,0 +1,15 @@
+<div id="cart-select">
+    <h2>Porfavor seleccione un carrito</h2>
+    {{#if cart}}
+        <select id="select-cart" name="id-cart">
+            {{#each cart}}
+                <option value={{this.id}}>Carrito {{this.id}}</option>
+            {{/each}}
+        </select>
+    {{else}}
+        <h4>
+            Opss..no hay carritos creados, porfavor dirigase a la seccion carrito para añadir uno, sino al
+            agregar un producto se le creara uno automaticamente
+        </h4>
+    {{/if}}
+</div>
