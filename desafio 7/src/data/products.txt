@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": "38vww4ool1tisyb6",
+    "timestamp": "10/04/2022 01:48:51",
+    "nombre": "insta1",
+    "descripcion": "producto",
+    "codigo": "1233",
+    "foto": "https://cdn4.iconfinder.com/data/icons/social-media-2070/140/_instagram-256.png",
+    "precio": "2",
+    "stock": "30"
+  },
+  {
+    "id": "38vww4ool1tit2z2",
+    "timestamp": "10/04/2022 01:48:57",
+    "nombre": "insta5000",
+    "descripcion": "producto",
+    "codigo": "1233",
+    "foto": "https://cdn4.iconfinder.com/data/icons/social-media-2070/140/_instagram-256.png",
+    "precio": "2",
+    "stock": "32"
+  },
+  {
+    "id": "38vww4ool1tits3s",
+    "timestamp": "10/04/2022 01:49:29",
+    "nombre": "insta4",
+    "descripcion": "producto",
+    "codigo": "1233",
+    "foto": "https://cdn4.iconfinder.com/data/icons/social-media-2070/140/_instagram-256.png",
+    "precio": "2",
+    "stock": "32"
+  }
+]

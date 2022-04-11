@@ -32,7 +32,6 @@ class Contenedor{
         }
     }
     async save(newProduct){
-        newProduct.id = await this.lastId()
         const products = await this.getAll()
         products.push(newProduct)
         try{
@@ -81,7 +80,7 @@ class Contenedor{
         const products = await this.getAll()
         try{
             for (const producto of products) {
-                if(producto.id === id){
+                if(String(producto.id) === String(id)){
                     products.splice(i, 1) //elimina del objeto el array en la posicion i
                     await fs.promises.writeFile(this.path, JSON.stringify(products, null,2))
                     return products
@@ -112,7 +111,6 @@ class Contenedor{
                 for (const producto of cart.producto) {
                     if(producto.id === parseInt(id_prod)){
                         cart.producto.splice(i , 1)
-                        console.log(cart.producto)
                     }
                     i=i+1
                 }
@@ -123,9 +121,8 @@ class Contenedor{
     async saveLvl2(id, product){
         const carts = await this.getAll()
         carts.map(cart=>{
-            if(cart.id === parseInt(id)){
+            if(String(cart.id) === String(id)){
                 cart.producto.push(product)
-
             }
         })
         this.updateAll(carts)
