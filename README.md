@@ -1,3 +1,2 @@
-En el archivo .env se encuentran las variables de entorno
-PORT
-ADMIN
+modelo base de datos
+![image](https://github.com/EfimeroM/ProyectoFinalReactJs/blob/main/src/media/ShopCard.gif)   
