@@ -1,0 +1,77 @@
+use ecommerce
+
+1 y 2
+db.mensajes.insertMany([
+	{email:"email1@gmail.com" , nombre:"nombre1" , mensaje:"mensaje1"},
+	{email:"email2@gmail.com" , nombre:"nombre2" , mensaje:"mensaje2"},
+	{email:"email3@gmail.com" , nombre:"nombre3" , mensaje:"mensaje3"},
+	{email:"email4@gmail.com" , nombre:"nombre4" , mensaje:"mensaje4"},
+	{email:"email5@gmail.com" , nombre:"nombre5" , mensaje:"mensaje5"},
+	{email:"email6@gmail.com" , nombre:"nombre6" , mensaje:"mensaje6"},
+	{email:"email7gmail.com" , nombre:"nombre7" , mensaje:"mensaje7"},
+	{email:"email8@gmail.com" , nombre:"nombre8" , mensaje:"mensaje8"},
+	{email:"email9@gmail.com" , nombre:"nombre9" , mensaje:"mensaje9"},
+	{email:"email10@gmail.com" , nombre:"nombre10" , mensaje:"mensaje10"}
+])
+db.productos.insertMany([
+	{timestamp: new Date(), nombre:"producto1", precio:120},
+	{timestamp: new Date(), nombre:"producto2", precio:580},
+	{timestamp: new Date(), nombre:"producto3", precio:900},
+	{timestamp: new Date(), nombre:"producto4", precio:1280},
+	{timestamp: new Date(), nombre:"producto5", precio:1700},
+	{timestamp: new Date(), nombre:"producto6", precio:2300},
+	{timestamp: new Date(), nombre:"producto7", precio:2860},
+	{timestamp: new Date(), nombre:"producto8", precio:3350},
+	{timestamp: new Date(), nombre:"producto9", precio:4320},
+	{timestamp: new Date(), nombre:"producto10", precio:4990},
+])
+
+3
+db.mensajes.find().pretty()
+db.productos.find().pretty()
+
+4
+db.mensajes.count()
+db.productos.count()
+
+5
+	a
+		db.productos.insertOne({timestamp: new Date(), nombre:"producto11", precio:5000})
+	b
+		i: db.productos.find({precio: {$lt:1000}})
+		ii: db.productos.find({$and:[{precio: {$gte:1000}},{precio: {$lte:3000}}]})
+		iii: db.productos.find({precio: {$gt:3000}})
+		iv: db.productos.find().skip(2).limit(1).sort({precio: 1})
+	c
+		db.productos.updateMany({},{$set: {stock:100} },{upsert:1})	
+	d
+		db.productos.updateMany({precio: {$gt:4000}}, {$set: {stock:0}})
+	e
+		db.productos.deleteMany({precio: {$lt:1000}})
+6
+	use admin
+	db.createUser({
+		user: "EfimeroM",
+		pwd: "EfimeroM",
+		roles:[
+		 {
+		  role: "userAdminAnyDatabase", db: "admin"
+		 },
+		 {
+		  role: "readWriteAnyDatabase", db: "admin"
+		 }
+		]
+	})
+	mongo -u EfimeroM -p --authenticationDatabase admin
+	use ecommerce
+	db.createUser({
+		user:"pepe",
+		pwd:"asd456",
+		roles:[
+		 {role: "read", db: "ecommerce"}
+		]
+	})
+	mongo -u pepe -p --authenticationDatabase ecommerce
+	show dbs
+	use ecommerce
+	db.mensajes.insertOne({prueba:1}) #da error de Unauthorized
